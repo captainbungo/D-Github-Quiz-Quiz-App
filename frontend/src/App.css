@@ -1,0 +1,417 @@
+/* Base styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: rgb(63,94,251);
+  background: linear-gradient(135deg, rgb(63,94,251) 0%, #d0e2f3 100%);
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #1a365d; /* DOST dark blue */
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* Quiz container */
+.quiz-container {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: 0 4px 16px rgba(0, 51, 153, 0.15);
+  max-width: 800px;
+  width: 100%;
+  margin: 1rem auto;
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  transform: none !important;
+  transition: none !important;
+}
+
+.quiz-container:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Welcome screen specific styles */
+.welcome-screen {
+  text-align: center;
+  padding: 3rem 2rem;
+  max-width: 480px;
+  margin: 2rem auto;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 51, 153, 0.15);
+  border: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+.welcome-screen h1 {
+  font-size: 2.5rem;
+  color: #003399; /* DOST blue */
+  margin-bottom: 2rem;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.welcome-screen h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: #003399;
+  border-radius: 2px;
+}
+
+.welcome-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.input-group {
+  margin-bottom: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 1.1rem;
+}
+
+.name-input {
+  width: 80%;
+  padding: 0.875rem 1.25rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  background: #f8fafc;
+  color: #1a365d;
+  text-align: center;
+  transform: scale(1);
+}
+
+.name-input:focus {
+  outline: none;
+  border-color: #003399;
+  box-shadow: 0 0 0 3px rgba(0, 51, 153, 0.1);
+  background: white;
+  transform: scale(1.02);
+}
+
+.name-input::placeholder {
+  color: #a0aec0;
+  text-align: center;
+}
+
+.name-input:hover {
+  background: #edf2f7;
+  transform: scale(1.01);
+}
+
+/* Action button specific to welcome screen */
+.welcome-screen .action-button {
+  width: 80%;
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  margin-top: 1rem;
+  background: #003399;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.welcome-screen .action-button:hover {
+  background: #002266;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 51, 153, 0.2);
+}
+
+.welcome-screen .action-button:active {
+  transform: translateY(0);
+}
+
+/* Question text */
+.question {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+/* Score display */
+.score {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #003399;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #f8fafc;
+  border-radius: 0.375rem;
+  border: 1px solid #cbd5e0;
+  display: inline-block;
+}
+
+/* Timer styles */
+.timer {
+  background: #003399; /* DOST blue */
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+}
+
+/* Options grid */
+.options-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Option button */
+.option-button {
+  background: #f8fafc;
+  border: 1px solid #cbd5e0;
+  border-radius: 0.375rem;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  color: #1a365d;
+  width: 100%;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  transform: none !important;
+}
+
+.option-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(0, 51, 153, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.option-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.option-button:active {
+  transform: scale(0.98);
+}
+
+/* Hint text */
+.hint {
+  color: #4a5568;
+  font-size: 1rem;
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  background: #f7fafc;
+  border-radius: 0.75rem;
+  border-left: 4px solid #4a5568;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Feedback message */
+.feedback {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.feedback.correct {
+  background: #e6f0ff;
+  color: #003399;
+  border: 1px solid #003399;
+}
+
+.feedback.incorrect {
+  background: #fff5f5;
+  color: #c53030;
+  border: 1px solid #c53030;
+}
+
+/* Final score screen */
+.final-score {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 51, 153, 0.15);
+  border: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+.final-score h2 {
+  font-size: 2rem;
+  color: #1a202c;
+  margin-bottom: 1.5rem;
+}
+
+/* Leaderboard styles */
+.leaderboard {
+  background: #f8fafc;
+  padding: 1.5rem;
+  border-radius: 0.375rem;
+  border: 1px solid #cbd5e0;
+  margin: 1.5rem 0;
+}
+
+.leaderboard h3 {
+  color: #003399;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.leaderboard ul {
+  list-style: none;
+  padding: 0;
+  color: #4a5568;
+}
+
+.leaderboard li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Action buttons */
+.action-button {
+  background: #003399; /* DOST blue */
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  transform: none !important;
+}
+
+.action-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.action-button:hover::after {
+  left: 100%;
+}
+
+.share-button {
+  background: #4c51bf;
+}
+
+.share-button:hover {
+  background: #434190;
+}
+
+/* Hint button */
+.hint-button {
+  background: transparent;
+  color: #003399;
+  border: 1px solid #003399;
+  border-radius: 0.375rem;
+  padding: 0.75rem 1.5rem;
+  margin: 1.5rem 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+}
+
+.hint-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 51, 153, 0.1);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.hint-button:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  #root {
+    padding: 1rem;
+  }
+  
+  .quiz-container {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+  
+  .options-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .score {
+    font-size: 1.5rem;
+  }
+}
+@media (min-width: 641px) {
+  .options-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
